@@ -1,0 +1,300 @@
+
+:root {
+    --color-white: #fff;
+    --color-black: #000;
+    --color-gray-light: #888;
+    --color-gray-dark: rgba(0, 0, 0, 0.6);
+    --color-bg-header: rgba(0, 0, 0, 0.36);
+    --font-primary: Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+#video-scythe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-bg-header);
+    color: var(--color-white);
+    z-index: 10;
+}
+
+.header-left,
+.header-mid,
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-left,
+.header-right {
+    flex: 1;
+}
+
+
+.header-left {
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.header-mid {
+    flex: 0 0 auto;
+    justify-content: center;
+    gap: 1rem;
+    width: 290px;
+}
+
+.header-right {
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.logo-v7x {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #535353;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header-left p {
+    background: linear-gradient(270deg, var(--color-black), var(--color-gray-light), var(--color-white), var(--color-gray-light), var(--color-black));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientGlow 5s ease infinite;
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-left: 0.25rem;
+}
+
+.verificado {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+    background: url('https://img.icons8.com/ios_filled/512/FFFFFF/instagram-verification-badge.png') center/cover no-repeat;
+}
+
+.box-links {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.box-links a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+.box-links a:hover,
+.box-links a:focus {
+    color: var(--color-black);
+    outline: none;
+}
+
+.header-right button {
+    width: 6.5rem;
+    height: 1.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+    font-size: 0.9rem;
+}
+
+.header-right button:nth-child(1) {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 1px solid #020000;
+}
+
+.header-right button:nth-child(1):hover,
+.header-right button:nth-child(1):focus {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    outline: none;
+}
+
+.header-right button:nth-child(2) {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.header-right button:nth-child(2):hover,
+.header-right button:nth-child(2):focus {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    outline: none;
+}
+
+@keyframes gradientGlow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.centralizar-banidos {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+@media screen and (max-width: 637px){
+    .centralizar-banidos{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.card-banido {
+    position: relative;
+    width: 23.75rem;
+    height: 9.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.86));
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 0.625rem;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    max-width: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.avatar {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 11px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid var(--color-white);
+}
+
+.info {
+    margin-top: 33px;
+    flex-grow: 1;
+    margin-left: 0.9375rem;
+}
+
+.info h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.125rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.info p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0.1875rem 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.status {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    width: 4.875rem;
+    height: 1.875rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status .banido {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(270deg, #ff0000, #ff0000, #ff0000, #888888, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientGlow 5s ease infinite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.centralizar-banidos article {
+    flex: 0 1 calc(50% - 20px);
+    display: flex;
+    margin: 0;
+}
+
+.mensagem-principal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.mensagem-principal h1 {
+    font-size: 20px;
+    background: linear-gradient(270deg, #ff0000, #ff0000, #ff0000, #888888, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientGlow 5s ease infinite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 25px 0px black;
+    border-radius: 11px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+}
