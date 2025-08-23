@@ -50,3 +50,4 @@ async function BAN(id) {
 
 BAN(114075438);
 BAN(114436149);
+BAN(120311891);
