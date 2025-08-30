@@ -1,4 +1,4 @@
-async function BAN(id) {
+async function BAN(id, tempo = '&') {
     const response = await fetch('https://kingshotuser.vercel.app/user', {
         method: 'POST',
         headers: {
@@ -15,6 +15,13 @@ async function BAN(id) {
     if (data == null) return 'Usuário inexistente!';
 
     const { fid, avatar_image, kid, nickname, stove_lv_content } = data;
+
+    let tempoBan;
+    if (tempo === '&' || tempo === '1/2' || tempo === 'infinito') {
+        tempoBan = 'Permanente';
+    } else {
+        tempoBan = `${tempo} minutos`;
+    }
 
     let section_banidos = document.querySelector('.centralizar-banidos');
 
@@ -38,6 +45,7 @@ async function BAN(id) {
             <p><strong>ID:</strong> ${fid}</p>
             <p><strong>Nível da Cidade:</strong> ${stove_lv_content}</p>
             <p><strong>Reino:</strong> #${kid}</p>
+            <p><strong>Tempo de Ban:</strong> ${tempoBan}</p>
         </div>
         <div class="status">
             <span class="banido">BANIDO</span>
@@ -48,7 +56,8 @@ async function BAN(id) {
 }
 
 
-BAN(114075438);
-BAN(114436149);
-BAN(120311891);
-BAN(115189677);
+
+BAN(114075438, '1/2');
+BAN(114436149, '1/2');
+BAN(120311891, 'Account Removed');
+BAN(115189677, 'INFINITY');
