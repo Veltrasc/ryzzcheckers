@@ -1,4 +1,4 @@
-async function BAN(id, tempo = '&') {
+async function BAN(id, tempo = '') {
     const response = await fetch('https://kingshotuser.vercel.app/user', {
         method: 'POST',
         headers: {
@@ -20,18 +20,7 @@ async function BAN(id, tempo = '&') {
 
     const { fid, avatar_image, kid, nickname, stove_lv_content } = data;
 
-    let tempoFormatado;
-    const tempoLower = String(tempo).toLowerCase();
-
-    const permanentes = ['&', '1/2', 'infinito', 'infinity', 'account removed'];
-
-    if (permanentes.includes(tempoLower)) {
-        tempoFormatado = 'Permanente';
-    } else if (!isNaN(tempo)) {
-        tempoFormatado = `${tempo} minutos`;
-    } else {
-        tempoFormatado = tempo; 
-    }
+    const tempoBan = tempo ? tempo : 'Não especificado';
 
     let section_banidos = document.querySelector('.centralizar-banidos');
 
@@ -60,7 +49,7 @@ async function BAN(id, tempo = '&') {
             <p><strong>ID:</strong> ${fid}</p>
             <p><strong>Nível da Cidade:</strong> ${stove_lv_content}</p>
             <p><strong>Reino:</strong> #${kid}</p>
-            <p><strong>Tempo de Ban:</strong> ${tempoFormatado}</p>
+            <p><strong>Tempo de Ban:</strong> ${tempoBan}</p>
         </div>
         <div class="status">
             <span class="banido">BANIDO</span>
