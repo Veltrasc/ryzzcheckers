@@ -8,19 +8,29 @@ async function BAN(id, tempo = '&') {
     });
 
     if (!response.ok) {
-        return 'Falha ao fazer requisição!';
+        console.error('Falha ao fazer requisição!');
+        return;
     }
 
     const data = await response.json();
-    if (data == null) return 'Usuário inexistente!';
+    if (data == null) {
+        console.warn('Usuário inexistente!');
+        return;
+    }
 
     const { fid, avatar_image, kid, nickname, stove_lv_content } = data;
 
-    let tempoBan;
-    if (tempo === '&' || tempo === '1/2' || tempo === 'infinito') {
-        tempoBan = 'Permanente';
+    let tempoFormatado;
+    const tempoLower = String(tempo).toLowerCase();
+
+    const permanentes = ['&', '1/2', 'infinito', 'infinity', 'account removed'];
+
+    if (permanentes.includes(tempoLower)) {
+        tempoFormatado = 'Permanente';
+    } else if (!isNaN(tempo)) {
+        tempoFormatado = `${tempo} minutos`;
     } else {
-        tempoBan = `${tempo} minutos`;
+        tempoFormatado = tempo; 
     }
 
     let section_banidos = document.querySelector('.centralizar-banidos');
@@ -31,7 +41,12 @@ async function BAN(id, tempo = '&') {
         section_banidos.setAttribute('aria-label', 'Lista de jogadores banidos');
 
         const main = document.getElementById('principal');
-        main.appendChild(section_banidos);
+        if (main) {
+            main.appendChild(section_banidos);
+        } else {
+            console.error('Elemento com id "principal" não encontrado!');
+            return;
+        }
     }
 
     const article = document.createElement('article');
@@ -45,7 +60,7 @@ async function BAN(id, tempo = '&') {
             <p><strong>ID:</strong> ${fid}</p>
             <p><strong>Nível da Cidade:</strong> ${stove_lv_content}</p>
             <p><strong>Reino:</strong> #${kid}</p>
-            <p><strong>Tempo de Ban:</strong> ${tempoBan}</p>
+            <p><strong>Tempo de Ban:</strong> ${tempoFormatado}</p>
         </div>
         <div class="status">
             <span class="banido">BANIDO</span>
