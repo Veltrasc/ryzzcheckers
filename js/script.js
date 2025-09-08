@@ -64,7 +64,6 @@ async function BAN(id, tempo = '') {
 BAN(114075438, '1/2');
 BAN(114436149, '1/2');
 BAN(120311891, 'Account Removed');
-BAN(115189677, 'INFINITY');
 BAN(115779257, '1/2');
 BAN(116369099, '1/2');
 BAN(113961015, '1/2');
